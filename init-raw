@@ -1,0 +1,12 @@
+sudo add-apt-repository ppa:fenics-packages/fenics-1.6.x
+sudo locale-gen sv_SE.UTF-8
+sudo apt-get update
+sudo apt-get install fenics
+sudo apt-get install python-pip
+sudo pip install celery
+sudo pip install flask
+sudo apt-get install gmsh
+git clone https://github.com/TDB-UU/naca_airfoil
+## måste ändra path till gmsh 
+## eventuellt vi gör en kopia av hela repot
+## och hämtar vårat egna som redan är fixat.
