@@ -28,7 +28,7 @@ sess = session.Session(auth=auth)
 nova = client.Client('2.1', session=sess)
 print "user authorization completed."
 
-image = nova.images.find(name="Group9Base")
+image = nova.images.find(name="Group9Base2.0")
 flavor = nova.flavors.find(name=flavor)
 
 if private_net != None:
@@ -38,7 +38,7 @@ else:
     sys.exit("private-net not defined.")
 
     #takes input config file
-cfg_file_path = sys.argv[1]     #'/home/varco/project/cloud-cfg.txt'
+cfg_file_path = sys.argv[1]
 if os.path.isfile(cfg_file_path):
     userdata = open(cfg_file_path)
 else:
@@ -70,9 +70,6 @@ print "Instance: "+ instance.name +" is in " + inst_status + "state"
 if floating_ip.ip != None: 
     instance.add_floating_ip(floating_ip)
     print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP attached " + floating_ip.ip
-    #change if neccessary, probably not needed at all
-    with open("/home/varco/project/floating_ip.txt","w") as f:
-        f.write(floating_ip.ip)
 else:
     print "Instance booted! Name: " + instance.name + " Status: " +instance.status+ ", floating IP missing"
 
