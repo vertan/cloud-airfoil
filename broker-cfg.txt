@@ -6,8 +6,16 @@ packages:
   - rabbitmq-server
 byobu_default: system 
 
+write_files:
+  - content: |
+    	     BROKER_URL = 'amqp://ubuntu:group9@$BROKER_IP:5672'
+    path: /home/ubuntu/proj/config.py
+
 runcmd:
   - sudo rabbitmqctl add_user ubuntu group9
   - sudo rabbitmqctl set_permissions ubuntu ".*" ".*" ".*"
   - sudo rabbitmqctl stop
   - sudo rabbitmq-server &
+
+bootcmd:
+  - export BROKER_IP=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`
