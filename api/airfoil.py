@@ -1,5 +1,6 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import subprocess as sp
+from airfoil_helper import get_flow_result
 
 app = Flask(__name__)
 
@@ -9,27 +10,21 @@ def index():
 
 @app.route('/airfoil/api/v1.0/flow/', methods=['GET'])
 def get_flow():
-    # TODO Make it possible to get real input from user
-    num_samples = 1
-    visc = 0.0001
-    speed = 10
-    time = 1
-    mesh = "./test_mesh.xml"
+    angle_start = request.args.get('angle_start')
+    angle_stop = request.args.get('angle_stop')
+    n_angles = request.args.get('n_angles')
+    n_nodes = request.args.get('n_nodes')
+    n_levels = request.args.get('n_levels')
+    num_samples = request.args.get('num_samples')
+    visc = request.args.get('visc')
+    speed = request.args.get('speed')
+    time = request.args.get('time')
 
-    # TODO Run the calculation script here for real result data, i.e.
-    # cmd = './airfoil'
-    # params = [cmd, num_samples, visc, speed, time, mesh]
-    cmd = 'echo'
-    params = [cmd, 'Hello Airfoil!']
-    # Runs a specified program on command line
-    output = sp.check_output(params)
-    
-    # TODO Spawn docker instance via docker-py?
+    result = get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
+                             n_levels, num_samples, visc, speed, time)
 
-    lift_force = 3.0
-    drag_force = 2.12
-    
-    return jsonify({'result': {'lift_force': lift_force, 'drag_force': drag_force, 'output': output}})
+    # Return the correct results here, only test data now
+    return jsonify({'result': {'lift_force': 1, 'drag_force': 2, 'output': result[0]}})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
