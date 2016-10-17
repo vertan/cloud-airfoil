@@ -1,4 +1,4 @@
-from test_tasks import get_flow
+from tasks import get_flow
 
 def get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
                     n_levels, num_samples, visc, speed, time):
