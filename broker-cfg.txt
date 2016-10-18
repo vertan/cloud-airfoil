@@ -4,6 +4,7 @@ apt_update: true
 apt_upgrade: true
 packages:
   - rabbitmq-server
+  - python-swiftclient
 byobu_default: system
 
 write_files:
@@ -25,3 +26,8 @@ runcmd:
   - sudo rabbitmqctl set_permissions ubuntu ".*" ".*" ".*"
   - bash -x /home/ubuntu/get_ip.sh
   - python /home/ubuntu/write_config.py
+  - mv /home/ubuntu/proj.key /home/ubuntu/.ssh/id_rsa
+  - git clone git@github.com:vertan/cloud-airfoil.git
+  - python /home/ubuntu/cloud-airfoil/airfoil.py
+  - bash -x /home/ubuntu/start_worker.sh
+  - bash -x /home/ubuntu/start_worker.sh
