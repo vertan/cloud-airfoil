@@ -26,8 +26,8 @@ def get_flow():
 
 
     result = get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
-                             n_levels, num_samples, visc, speed, time, str(global_run_id))
-    global_run_id++
+                             n_levels, num_samples, visc, speed, time, global_run_id)
+    global_run_id+=1
 
     # Return the correct results here, only test data now
     return jsonify({'result': {'lift_force': 1, 'drag_force': 2, 'output': result[0]}})
