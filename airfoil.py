@@ -11,7 +11,7 @@ def index():
     return "Airfoil API v1.0!"
 
 @app.route('/airfoil/api/v1.0/flow/', methods=['GET'])
-def get_flow():
+def get_flo():
     angle_start = request.args.get('angle_start', 10, type=int)
     angle_stop = request.args.get('angle_stop', 15, type=int)
     n_angles = request.args.get('n_angles', 5, type=int)

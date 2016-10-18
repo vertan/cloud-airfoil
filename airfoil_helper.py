@@ -5,8 +5,8 @@ def get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
     step = (angle_stop-angle_start)/n_angles
     
     for i,angle in enumerate(range(angle_start, angle_stop+1, step)):
-        results[i] = get_flow(str(angle), str(n_nodes), str(n_levels),
-                              str(num_samples), str(visc), str(speed), str(time), str(run_id)).delay()
+        results[i] = get_flow.delay(str(angle), str(n_nodes), str(n_levels),
+                              str(num_samples), str(visc), str(speed), str(time), str(run_id))
     for i,angle in enumerate(range(angle_start, angle_stop+1, step)):
         results[i] = results[i].get()
     
