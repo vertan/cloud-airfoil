@@ -11,16 +11,16 @@ def index():
     return "Airfoil API v1.0!"
 
 @app.route('/airfoil/api/v1.0/flow/', methods=['GET'])
-def get_flow():
+def get_flo():
     angle_start = request.args.get('angle_start', 10, type=int)
     angle_stop = request.args.get('angle_stop', 15, type=int)
-    n_angles = request.args.get('n_angles', 1, type=int)
-    n_nodes = request.args.get('n_nodes', 1, type=int)
-    n_levels = request.args.get('n_levels', 1, type=int)
-    num_samples = request.args.get('num_samples', 1, type=int)
+    n_angles = request.args.get('n_angles', 5, type=int)
+    n_nodes = request.args.get('n_nodes', 200, type=int)
+    n_levels = request.args.get('n_levels', 0, type=int)
+    num_samples = request.args.get('num_samples', 10, type=int)
     visc = request.args.get('visc', 0.001, type=float)
     speed = request.args.get('speed', 10, type=int)
-    time = request.args.get('time', 10, type=int)
+    time = request.args.get('time', 0.02, type=int)
 
     print angle_start, angle_stop, n_angles, n_nodes, n_levels, num_samples, visc, speed, time
 

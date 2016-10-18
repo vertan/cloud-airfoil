@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html>
+
+<title>Airfoil</title>
+
+	<body>
+<!--   		<h1>Hello {{ zippadeFilerTyp }}!</h1> -->
+<!--     <h1>Airfoil</h1>-->
+
+		<div id="container">
+
+		            <div class="title">
+		                <h1>Run Airfoil Simulation</h1>
+		            </div>
+
+		            <div id="content">
+
+		                <form method="POST" action=".">
+
+		                  <label for="angle_start">Please enter startangle</label>
+		                  <input type="number" min="0" max="360" id="angle_start" name="angle_start" required /><br />
+
+		                  <label for="angle_stop">Please enter stopangle:</label>
+		                  <input type="number" min="0" max="360" id="angle_stop" name="angle_stop" required /><br />
+
+		                  <label for="n_angles">Please enter amount of angles:</label>
+		                  <input type="number" min="1" max="30" id="n_angles" name="n_angles" required /><br />
+
+		                  <label for="n_nodes">Please enter nodes:</label>
+		                  <input type="number" min="0" id="n_nodes" name="n_nodes" required /><br />
+
+		                  <label for="n_levels">Please enter levels:</label>
+		                  <input type="number" min="0" max="6" id="n_levels" name="n_levels" required /><br />
+
+		                  <label for="num_samples">Please enter number of samples:</label>
+		                  <input type="number" min="1" id="num_samples" name="num_samples" required /><br />		
+
+		                  <label for="visc">Please enter visc:</label>
+		                  <input type="number" step="0.000001" max="1" id="visc" name="visc" required /><br />
+
+		                  <label for="speed">Please enter speed:</label>
+		                  <input type="number" min="0" step="0.0001" id="speed" name="speed" required /><br />		
+
+		                  <label for="time">Please enter time:</label>
+		                  <input type="number" min="0" step="0.00001" max="5" id="time" name="time" required /><br/>
+
+		                  <input type="submit" value="Run Simulation">
+
+		                </form>
+		            </div>
+
+		</div>
+
+	</body>
+
+<style>
+
+input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+
+</html>

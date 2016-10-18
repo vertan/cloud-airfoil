@@ -45,7 +45,7 @@ def get_flow(angle, n_nodes, n_ref_levels, n_samples, visc, vel, T, run_id):
     ## save results to swift container
     for file_name in os.listdir("./results"):
         with open('./results/' + file_name, 'r') as current_file:
-            conn.put_object(container_name, "Airfoil_" + run_id + "/" + os.path.basename(current_file.name), contents= current_file.read(), content_type='text/plain')
+            conn.put_object(container_name, "Airfoil_" + run_id + "/r" + n_ref_levels + "a" + angle + "n" + n_nodes + "/" + os.path.basename(current_file.name), contents= current_file.read(), content_type='text/plain')
     ##
     return 1
 
