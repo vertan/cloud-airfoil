@@ -4,6 +4,8 @@ from airfoil_helper import get_flow_result
 
 app = Flask(__name__)
 
+global_run_id = 10
+
 @app.route('/airfoil/api/v1.0/')
 def index():
     return "Airfoil API v1.0!"
@@ -24,7 +26,8 @@ def get_flow():
 
 
     result = get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
-                             n_levels, num_samples, visc, speed, time)
+                             n_levels, num_samples, visc, speed, time, str(global_run_id))
+    global_run_id++
 
     # Return the correct results here, only test data now
     return jsonify({'result': {'lift_force': 1, 'drag_force': 2, 'output': result[0]}})
