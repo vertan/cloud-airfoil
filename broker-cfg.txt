@@ -10,10 +10,18 @@ write_files:
   - path: /home/ubuntu/get_ip.sh
     content: |
       #!/bin/bash
-      echo "export LOCAL_IP=`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`" >> /home/ubuntu/.bashrc
-      source /home/ubuntu/.bashrc
-    
+      echo "`ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'`" > /home/ubuntu/ip.txt
+
+  - path: /home/ubuntu/write_config.py
+    content: |
+      import os
+      with open("/home/ubuntu/ip.txt","r") as f:
+          ip = f.readline()[:-1]
+      with open("/home/ubuntu/config.py","w") as f:
+      	  f.write("BROKER_URL='amqp://ubuntu:group9@"+ip+":5672//'")
+	  
 runcmd:
   - sudo rabbitmqctl add_user ubuntu group9
   - sudo rabbitmqctl set_permissions ubuntu ".*" ".*" ".*"
   - bash -x /home/ubuntu/get_ip.sh
+  - python /home/ubuntu/write_config.py
