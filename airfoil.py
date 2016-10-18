@@ -24,14 +24,14 @@ def get_flo():
 
     print angle_start, angle_stop, n_angles, n_nodes, n_levels, num_samples, visc, speed, time
 
-
+    global global_run_id
     result = get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
                              n_levels, num_samples, visc, speed, time, global_run_id)
-    global global_run_id
+    
     global_run_id+=1
 
     # Return the correct results here, only test data now
-    return jsonify({'result': {'lift_force': 1, 'drag_force': 2, 'output': result[0]}})
-
+    #return jsonify({'result': {'lift_force': 1, 'drag_force': 2, 'output': result[0]}})
+    return "What."
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

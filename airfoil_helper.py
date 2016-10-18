@@ -10,8 +10,8 @@ def get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
         results.append(get_flow.delay(str(angle), str(n_nodes), str(n_levels),
                               str(num_samples), str(visc), str(speed), str(time), str(run_id)))
         
-    for i,angle in enumerate(range(angle_start, angle_stop+1, step)):
-        results[i] = results[i].get()
+#    for i,angle in enumerate(range(angle_start, angle_stop+1, step)):
+ #       results[i] = results[i].get()
     
     # TODO wait until all work is done
     # TODO give user link to swift folder

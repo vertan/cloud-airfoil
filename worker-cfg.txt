@@ -2,4 +2,7 @@
 
 apt_update: true
 apt_upgrade: true
+packages:
+  - python-keystoneclient
+  - python-swiftclient
 byobu_default: system
