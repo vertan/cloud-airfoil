@@ -26,7 +26,7 @@ def get_flow():
 
 
     result = get_flow_result(angle_start, angle_stop, n_angles, n_nodes,
-                             n_levels, num_samples, visc, speed, time, str(global_run_id))
+                             n_levels, num_samples, visc, speed, time, global_run_id)
     global_run_id++
 
     # Return the correct results here, only test data now
