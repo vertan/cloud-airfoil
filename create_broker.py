@@ -28,7 +28,7 @@ sess = session.Session(auth=auth)
 nova = client.Client('2.1', session=sess)
 print "user authorization completed."
 
-image = nova.images.find(name="Group9Base2.0")
+image = nova.images.find(name="Group9Broker1.0")
 flavor = nova.flavors.find(name=flavor)
 
 if private_net != None:
