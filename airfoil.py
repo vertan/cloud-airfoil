@@ -32,6 +32,7 @@ def get_flo():
 
     # Return the correct results here, only test data now
     #return jsonify({'result': {'lift_force': 1, 'drag_force': 2, 'output': result[0]}})
-    return "What."
+    #return "What."
+    return "The result will soon be available on this URL: http://130.238.29.253:8080/swift/v1/PotatisProject/?prefix=Airfoil_" + str(global_run_id-1) + "/"
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
